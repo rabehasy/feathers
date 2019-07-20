@@ -124,6 +124,19 @@ module.exports = function (app) {
   lieu.associate = function (models) {
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
+
+    const {
+      country,
+      region,
+      locality,
+      quartier
+    } = models;
+
+    lieu.belongsTo(country);
+    lieu.belongsTo(region);
+    lieu.belongsTo(locality);
+    lieu.belongsTo(quartier);
+
   };
 
   return lieu;

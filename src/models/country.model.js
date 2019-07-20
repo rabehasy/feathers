@@ -44,6 +44,12 @@ module.exports = function (app) {
   country.associate = function (models) {
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
+
+    const {
+      region
+    } = models;
+
+    country.hasMany(region);
   };
 
   return country;

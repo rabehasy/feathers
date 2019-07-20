@@ -1,10 +1,12 @@
 const { authenticate } = require('@feathersjs/authentication').hooks;
 
+const localityHook = require('../../hooks/locality');
+
 module.exports = {
   before: {
     all: [ authenticate('jwt') ],
     find: [],
-    get: [],
+    get: [localityHook()],
     create: [],
     update: [],
     patch: [],

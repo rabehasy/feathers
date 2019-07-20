@@ -96,6 +96,26 @@ module.exports = function (app) {
   commonEvent.associate = function (models) {
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
+
+    const {
+      date
+    } = models;
+
+    commonEvent.belongsToMany(date, {
+      through: 'local_by_date',
+      foreignKey: 'event_local_id',
+      otherKey: 'event_date_id',
+      timestamps: false
+    });
+
+    commonEvent.belongsToMany(date, {
+      through: 'local_by_date_home',
+      as: 'date_home',
+      foreignKey: 'event_local_id',
+      otherKey: 'event_date_id',
+      timestamps: false
+    });
+
   };
 
   return commonEvent;

@@ -52,6 +52,13 @@ module.exports = function (app) {
   quartier.associate = function (models) {
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
+
+    const {
+      locality
+    } = models;
+
+    quartier.belongsTo(locality);
+
   };
 
   return quartier;

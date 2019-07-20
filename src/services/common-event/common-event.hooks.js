@@ -1,10 +1,12 @@
 const { authenticate } = require('@feathersjs/authentication').hooks;
 
+const commonEventHook = require('../../hooks/common-event');
+
 module.exports = {
   before: {
     all: [ authenticate('jwt') ],
     find: [],
-    get: [],
+    get: [commonEventHook()],
     create: [],
     update: [],
     patch: [],

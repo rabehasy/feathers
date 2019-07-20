@@ -56,6 +56,15 @@ module.exports = function (app) {
   locality.associate = function (models) {
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
+
+    const {
+      region,
+      quartier
+    } = models;
+
+    locality.belongsTo(region);
+    locality.hasMany(quartier);
+
   };
 
   return locality;

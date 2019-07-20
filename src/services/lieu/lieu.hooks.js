@@ -1,10 +1,12 @@
 const { authenticate } = require('@feathersjs/authentication').hooks;
 
+const lieuHook = require('../../hooks/lieu');
+
 module.exports = {
   before: {
     all: [ authenticate('jwt') ],
     find: [],
-    get: [],
+    get: [lieuHook()],
     create: [],
     update: [],
     patch: [],
