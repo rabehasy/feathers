@@ -1,13 +1,31 @@
 const api = require('./api/api.service.js');
-const users = require('./users/users.service.js');
 const fosUsers = require('./fos_users/fos_users.service.js');
 const event = require('./event/event.service.js');
 const flyers = require('./flyers/flyers.service.js');
+const lieu = require('./lieu/lieu.service.js');
+const entree = require('./entree/entree.service.js');
+const thematique = require('./thematique/thematique.service.js');
+const artistes = require('./artistes/artistes.service.js');
+const date = require('./date/date.service.js');
+const commonEvent = require('./common-event/common-event.service.js');
+const country = require('./country/country.service.js');
+const region = require('./region/region.service.js');
+const locality = require('./locality/locality.service.js');
+const quartier = require('./quartier/quartier.service.js');
 // eslint-disable-next-line no-unused-vars
 module.exports = function (app) {
   app.configure(api);
-  app.configure(users);
   app.configure(fosUsers);
   app.configure(event);
   app.configure(flyers);
+  app.configure(lieu);
+  app.configure(entree);
+  app.configure(thematique);
+  app.configure(artistes);
+  app.configure(date);
+  app.configure(commonEvent);
+  app.configure(country);
+  app.configure(region);
+  app.configure(locality);
+  app.configure(quartier);
 };

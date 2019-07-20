@@ -1,13 +1,13 @@
 const { authenticate } = require('@feathersjs/authentication').hooks;
 
-const apiEvent = require('../../hooks/api-event');
+const apiHook = require('../../hooks/api');
 
 
 module.exports = {
   before: {
     all: [],
-    find: [apiEvent()],
-    get: [apiEvent()],
+    find: [],
+    get: [],
     create: [],
     update: [],
     patch: [],

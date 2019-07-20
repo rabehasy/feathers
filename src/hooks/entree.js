@@ -4,11 +4,12 @@
 // eslint-disable-next-line no-unused-vars
 module.exports = function (options = {}) {
   return async context => {
+
     const sequelize = context.app.get('sequelizeClient');
-    const { flyers } = sequelize.models;
+    const { event  } = sequelize.models;
     context.params.sequelize = {
       include: [
-        { model: flyers }
+        { model: event, limit: 10 }
       ],
       raw: false,
     };

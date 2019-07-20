@@ -26,8 +26,7 @@ module.exports = function (app) {
     }
   }, {
     tableName: 'api',
-    underscored: true,
-    timestamps: false
+    underscored: true
   }, {
     hooks: {
       beforeCount(options) {

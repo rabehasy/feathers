@@ -1,30 +1,24 @@
+// See http://docs.sequelizejs.com/en/latest/docs/models-definition/
+// for more of what you can do here.
 const Sequelize = require('sequelize');
 const DataTypes = Sequelize.DataTypes;
 
 module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient');
-
-  const eventFlyers = sequelizeClient.define('event_flyers', {
-    event_id: {
+  const date = sequelizeClient.define('date', {
+    id: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       primaryKey: true,
-      references: {
-        model: 'event',
-        key: 'id'
-      }
+      autoIncrement: true
     },
-    event_flyers_id: {
-      type: DataTypes.INTEGER(11),
+    date: {
+      type: DataTypes.DATEONLY,
       allowNull: false,
-      primaryKey: true,
-      references: {
-        model: 'flyers',
-        key: 'id'
-      }
+      unique: true
     }
   }, {
-    tableName: 'event_event_flyers',
+    tableName: 'event_date',
     underscored: true,
     timestamps: false
   }, {
@@ -36,11 +30,10 @@ module.exports = function (app) {
   });
 
   // eslint-disable-next-line no-unused-vars
-  eventFlyers.associate = function (models) {
+  date.associate = function (models) {
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
-
   };
 
-  return eventFlyers;
+  return date;
 };

@@ -1,8 +1,8 @@
 const assert = require('assert');
 const feathers = require('@feathersjs/feathers');
-const eventHook = require('../../src/hooks/event');
+const eventEntree = require('../../src/hooks/event-entree');
 
-describe('\'eventHook\' hook', () => {
+describe('\'eventEntree\' hook', () => {
   let app;
 
   beforeEach(() => {

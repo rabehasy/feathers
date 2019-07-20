@@ -163,14 +163,75 @@ module.exports = function (app) {
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
 
-    const { api } = models;
+    const {
+      api,
+      entree,
+      flyers,
+      lieu,
+      thematique,
+      artistes,
+      date,
+      common_event,
+      event
+    } = models;
+
+
     event.belongsTo(api);
 
-    const { flyers } = models;
+    event.belongsTo(entree, {
+      foreignKey: 'entreetype_id'
+    });
+
     event.belongsToMany(flyers, {
       through: 'event_event_flyers',
-      foreignKey: 'event_id'
+      foreignKey: 'event_id',
+      timestamps: false
+
     });
+
+    event.belongsToMany(lieu, {
+      through: 'event_event_lieu',
+      foreignKey: 'event_id',
+      otherKey: 'event_lieu_id',
+      timestamps: false
+    });
+
+    event.belongsToMany(thematique, {
+      through: 'event_event_type',
+      foreignKey: 'event_id',
+      otherKey: 'event_type_id',
+      timestamps: false
+    });
+
+    event.belongsToMany(artistes, {
+      through: 'event_event_artistes_dj_organisateurs',
+      foreignKey: 'event_id',
+      otherKey: 'event_artistes_dj_organisateurs_id',
+      timestamps: false
+    });
+
+    event.belongsToMany(date, {
+      through: 'event_by_date',
+      foreignKey: 'event_id',
+      otherKey: 'event_date_id',
+      timestamps: false
+    });
+
+    event.belongsToMany(common_event, {
+      through: 'event_event_local',
+      foreignKey: 'event_id',
+      otherKey: 'event_local_id',
+      timestamps: false
+    });
+
+    event.belongsToMany(event, {
+      through: 'related_event',
+      as: 'eventRelated',
+      foreignKey: 'event_source',
+      otherKey: 'event_target',
+      timestamps: false
+    });
+
 
   };
 

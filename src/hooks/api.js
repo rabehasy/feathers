@@ -6,10 +6,10 @@ module.exports = function (options = {}) {
   return async context => {
 
     const sequelize = context.app.get('sequelizeClient');
-    const { api } = sequelize.models;
+    const { event } = sequelize.models;
     context.params.sequelize = {
       include: [
-        { model: api }
+        { model: event }
       ],
       raw: false,
     };

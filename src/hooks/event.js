@@ -6,13 +6,32 @@ module.exports = function (options = {}) {
   return async context => {
 
     const sequelize = context.app.get('sequelizeClient');
-    const { event } = sequelize.models;
+    const {
+      entree,
+      api,
+      flyers,
+      lieu,
+      thematique,
+      artistes,
+      date,
+      common_event
+    } = sequelize.models;
     context.params.sequelize = {
       include: [
-        { model: event, limit: 10}
+        { model: entree },
+        { model: api },
+        { model: flyers },
+        { model: lieu },
+        { model: thematique },
+        { model: artistes },
+        { model: date },
+        { model: common_event },
+        'eventRelated'
+
       ],
       raw: false,
     };
+
     return context;
   };
 };
