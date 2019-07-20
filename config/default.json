@@ -1,0 +1,34 @@
+{
+  "host": "localhost",
+  "port": 3030,
+  "public": "../public/",
+  "paginate": {
+    "default": 10,
+    "max": 50
+  },
+  "mysql": "mysql://madatsara:!4xntmj60!@localhost:3306/madatsara",
+  "authentication": {
+    "secret": "54e50feefcc56681a356053be94cf1fa3e137e36387347349c605efbc8b61637da1f1d3e04a350c0a7cfea4c6871e49552fda8b54faa45ec3b5f9f44f6b2b1fe86e4a976d1b62a6edb1284b96aa6ede0e3ff6c009f2d6b851602faa53dc4cc6004eeeac01d106a10a56781a506bb946e8851657cb11e13a0613e4e0851f833c0916d3b8eed7000cbf7c1d940097224e7944c326310dade404c27f5a9686b2197a68d68ef1ccb4dc9011a29cfe4ac8c32ff833dacaaec2a9502db8d48f2d5334ddfa74c0d5c2398216b01eedf9e6fdc1bccca5f68fc06a48d3d882eed1d2eadec9b254d9fc5f77243707a1552899b03462b1429b9dafda93cab51eeedd57c2650",
+    "strategies": [
+      "jwt",
+      "local"
+    ],
+    "path": "/authentication",
+    "service": "fos_users",
+    "jwt": {
+      "header": {
+        "typ": "access"
+      },
+      "audience": "http://localhost:3030",
+      "subject": "anonymous",
+      "issuer": "feathers",
+      "algorithm": "HS256",
+      "expiresIn": "1y"
+    },
+    "local": {
+      "entity": "user",
+      "usernameField": "\\username",
+      "passwordField": "password"
+    }
+  }
+}
