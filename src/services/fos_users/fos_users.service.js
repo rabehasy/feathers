@@ -13,10 +13,10 @@ module.exports = function (app) {
   };
 
   // Initialize our service with any options it requires
-  app.use('/fos_users', createService(options));
+  app.use('/api/user', createService(options));
 
   // Get our initialized service so that we can register hooks
-  const service = app.service('fos_users');
+  const service = app.service('api/user');
 
   service.hooks(hooks);
 };

@@ -13,8 +13,8 @@
       "jwt",
       "local"
     ],
-    "path": "/authentication",
-    "service": "fos_users",
+    "path": "/api/login",
+    "service": "api/user",
     "jwt": {
       "header": {
         "typ": "access"
